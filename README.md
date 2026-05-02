@@ -1,59 +1,55 @@
-# idor-case-study-realworld
-This project replicates a real-world IDOR vulnerability identified in a university system, demonstrating how improper access control can lead to unauthorized data exposure
-# Real-World IDOR Case Report (Sanitized)
+# IDOR Vulnerability Case Study (Real-World Inspired)
 
-## 1. Context
-During security testing of a university web system, an access control flaw was identified.
+This repository demonstrates an Insecure Direct Object Reference (IDOR) vulnerability using a controlled demo, based on a real vulnerability identified in a university system.
 
----
-
-## 2. Vulnerability
-Insecure Direct Object Reference (IDOR)
+## What makes this different
+- Real vulnerability discovery (sanitized)
+- Working exploit demonstration (local demo)
+- Secure implementation with fixes
 
 ---
 
-## 3. Affected Functionality
-Notification API endpoint using:
-user_id parameter
+## Real-World Context (Sanitized)
+
+While testing a university web application, an IDOR vulnerability was identified in the notification system.
+
+### Observation
+The application used a parameter:
+GET /api/notifications?user_id=XXXX
+
+By modifying `user_id`, it was possible to access:
+- Other students' data
+- Teacher records
+- Admin-level information
+
+Sensitive details, domain, and identifiers are intentionally removed for ethical reasons.
 
 ---
 
-## 4. Attack Vector
-An authenticated user intercepts a request and modifies the user_id parameter to access unauthorized data.
+## Mapping to Demo
+
+| Real System Issue | Demo Equivalent |
+|------------------|----------------|
+| user_id parameter | /api/user?id= |
+| Unauthorized access | Data exposure |
+| No access control | Missing auth check |
 
 ---
 
-## 5. Impact
-- Exposure of student personal data  
-- Access to teacher and admin-level information  
-- Risk of phishing and impersonation  
+## Why this matters
+This demonstrates how a small access control flaw can escalate into large-scale data exposure, relevant in real cybercrime investigations.
 
 ---
 
-## 6. Severity
-High
+## Ethical Disclosure
+- No data was misused
+- No system damage was caused
+- Details are anonymized
 
 ---
 
-## 7. Root Cause
-No server-side validation of resource ownership.
-
----
-
-## 8. Remediation
-- Enforce authorization checks  
-- Use session-based identity  
-- Implement role-based access control  
-
----
-
-## 9. Validation via Demo
-A controlled Node.js application was created to replicate the same flaw and demonstrate:
-- Exploitation
-- Impact
-- Secure fix
-
----
-
-## 10. Ethical Consideration
-All sensitive identifiers and system details have been removed to ensure responsible disclosure.
+## Learning Outcome
+Understanding IDOR is critical for:
+- Preventing data breaches
+- Investigating unauthorized access
+- Strengthening backend security
