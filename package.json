@@ -1,0 +1,12 @@
+{
+  "name": "idor-demo",
+  "version": "1.0.0",
+  "description": "IDOR vulnerability demo",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
